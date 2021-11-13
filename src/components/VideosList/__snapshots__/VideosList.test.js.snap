@@ -2,6 +2,7 @@
 
 exports[`should render video list component 1`] = `
 <div
+  class="video-wrapper"
   data-testid="video-thumbnail-wrapper"
 >
   <div

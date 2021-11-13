@@ -1,6 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import Config from '../../config';
+import { render, waitFor } from '@testing-library/react';
 
 import Home from './home';
 
@@ -11,7 +10,7 @@ jest.mock('../../helpers/utils', () => {
     }
 });
 
-jest.mock('../../components/Header', () => (props) => <div data-testid="header" {...props} onSearch={mockOnSearch} />);
+jest.mock('../../components/Header', () => (props) => <div data-testid="header" {...props} />);
 jest.mock('../../components/VideosList', () => (props) => <div data-testid="video-list" {...props} />);
 jest.mock('../../components/VideoPlayer', () => (props) => <div data-testid="video-player" {...props} />);
 
@@ -64,18 +63,17 @@ test('should render header component', async () => {
     const headerElement = getByTestId('header');
 
     expect(headerElement).toBeDefined();
-    expect(headerElement).toMatchSnapshot();
 });
 
 test('should render video list component', async () => {
     mockGetVideoDetailsByKey.mockReset();
     mockGetVideoDetailsByKey.mockResolvedValueOnce({ data: mockResponseData });
-    const { getByTestId } = await render(<Home />);
+    const { getByTestId } = render(<Home />);
 
     const videoListElement = getByTestId('video-list');
 
     expect(mockGetVideoDetailsByKey).toHaveBeenCalledTimes(1);
-    expect(mockGetVideoDetailsByKey).toHaveBeenCalledWith('youtube', 15);
+    expect(mockGetVideoDetailsByKey).toHaveBeenCalledWith('youtube', 30);
     expect(videoListElement).toBeDefined();
     expect(videoListElement).toMatchSnapshot();
 });

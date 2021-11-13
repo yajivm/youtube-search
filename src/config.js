@@ -1,6 +1,6 @@
 const YOUTUBE_API = {
     URL: "https://www.googleapis.com/youtube/v3",
-    KEY : 'AIzaSyDTjRay5pHyjs0ZRcFpZya_MSMbIqvYQ5o',
+    KEY : 'AIzaSyD9e4_OLstRgz_Q428ESQRWwE6uWx9sqwc',
 };
 
 const EXPECTED_RESULTS_COUNT = 15;

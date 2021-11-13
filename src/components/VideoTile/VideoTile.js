@@ -4,7 +4,7 @@ import { getPublishedDate } from '../../helpers/utils';
 
 import './VideoTile.style.css';
 
-const VideoTile = ({ videoData, onSelectVideoTile }) => {
+const VideoTile = ({ videoData, onSelectVideoTile, isThumbnailLayout }) => {
     const selectVideo = () => {
         onSelectVideoTile(videoData);
     };
@@ -22,11 +22,11 @@ const VideoTile = ({ videoData, onSelectVideoTile }) => {
 
     return (
         <div
-            className="video"
+            className={`video${isThumbnailLayout ? ' video-thumbnail' : ''}`}
             onClick={() => selectVideo()}
             data-testid={`video${videoData?.id?.videoId}`}
         >
-            <div className="video-thumbnail">
+            <div className="video-image-wrapper">
                 <img src={videoData?.snippet?.thumbnails?.high?.url} alt="videoTile" title={videoData?.snippet?.title} />
             </div>
             <div className="video-details">
@@ -45,6 +45,11 @@ VideoTile.propTypes = {
         snippet: PropTypes.shape(),
     }).isRequired,
     onSelectVideoTile: PropTypes.func.isRequired,
+    isThumbnailLayout: PropTypes.bool,
+};
+
+VideoTile.defaultProps = {
+    isThumbnailLayout: false,
 };
 
 export default VideoTile;

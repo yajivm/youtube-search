@@ -39,6 +39,7 @@ const VideoPlayer = ({ videoId, videoData }) => {
             />
             {videoData?.title && <h3 className="title" data-testid="video-title">{videoData?.title}</h3>}
             {getVideoChannelDetails()}
+            {videoData?.description && <p className="description" data-testid="video-description">{videoData?.description}</p>}
         </div>
     );
 };

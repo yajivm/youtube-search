@@ -11,11 +11,11 @@ import './home.style.css';
 
 const DEFAULT_SEARCH_KEY = 'youtube';
 const { EXPECTED_RESULTS_COUNT } = Config;
+let maxResultsCount = EXPECTED_RESULTS_COUNT;
 
 const Home = () => {
     const [videosList, setVideosList] = useState([]);
     const [selectedVideoDetails, setSelectedVideoDetails] = useState(null);
-    const [maxResultsCount, setMaxResultsCount] = useState(EXPECTED_RESULTS_COUNT);
 
     const searchInputRef = useRef();
 
@@ -24,11 +24,11 @@ const Home = () => {
             .then(({ data }) => {
                 const { items } = data;
                 if (items?.length !== 0) {
-                    setSelectedVideoDetails(items[0]);
                     setVideosList(items);
                     console.log('items=====>', items);
                 }
-                setMaxResultsCount(maxResultsCount + EXPECTED_RESULTS_COUNT);
+                console.log('maxResultsCount=====>', maxResultsCount);
+                maxResultsCount = maxResultsCount + EXPECTED_RESULTS_COUNT;
             })
             .catch(err => {
                 console.log('youtube search api err=====>', err.response);
@@ -47,7 +47,7 @@ const Home = () => {
         const isScrollReachedBottom = scrollReachedBottom();
         if (isScrollReachedBottom) {
             const searchKey = searchInputRef?.current?.getSearchKey();
-            onSearchVideosByKey(searchKey, maxResultsCount);
+            onSearchVideosByKey(searchKey);
         }
     }
 
@@ -60,16 +60,22 @@ const Home = () => {
         <>
             <div className="page-content">
                 <Header onSearch={onSearchVideosByKey} headerRef={searchInputRef} />
-                <main >
-                    <VideoPlayer videoData={selectedVideoDetails?.snippet} videoId={selectedVideoDetails?.id?.videoId} />
-                    {videosList.length > 0 ?
-                        <div>
-                            <VidesoList listData={videosList} onVideoSelected={onVideoSelected} />
-                        </div>
-                    :
-                        <></>
-                    }
-                </main>
+                {!selectedVideoDetails ?
+                    <main className="list-without-video-player">
+                        <VidesoList data-testid="video-list" listData={videosList} onVideoSelected={onVideoSelected} />
+                    </main>
+                :
+                    <main className="list-with-video-player">
+                        <VideoPlayer videoData={selectedVideoDetails?.snippet} videoId={selectedVideoDetails?.id?.videoId} />
+                        {videosList.length > 0 ?
+                            <div>
+                                <VidesoList listData={videosList} onVideoSelected={onVideoSelected} isThumbnailLayout={true} />
+                            </div>
+                        :
+                            <></>
+                        }
+                    </main>
+                }
             </div>
         </>
     );

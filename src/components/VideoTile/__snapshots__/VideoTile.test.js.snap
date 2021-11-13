@@ -6,7 +6,7 @@ exports[`should render video tile component 1`] = `
   data-testid="videoaTestId"
 >
   <div
-    class="video-thumbnail"
+    class="video-image-wrapper"
   >
     <img
       alt="videoTile"

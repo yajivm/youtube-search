@@ -1,8 +1,20 @@
 main {
-    display: grid;
-    grid-template-columns: 75% 1fr;
-    grid-template-rows: 70px auto;
     margin: 80px auto;
     width: 96%;
     height: 100vh;
+}
+
+.list-with-video-player {
+    display: grid;
+    grid-template-columns: 75% 1fr;
+    grid-template-rows: 70px auto;
+}
+
+.list-without-video-player {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list-without-video-player .video {
+    flex-direction: column;
 }

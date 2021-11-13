@@ -7,6 +7,10 @@
   height: 100%;
 }
 
+.video-player .title {
+  margin-bottom: 8px;
+}
+
 .place-holder-text-wrapper {
   text-align: center;
   font-size: 18px;
@@ -22,6 +26,8 @@
 
 .details-list > li {
   display: inline;
+  font-weight: 700;
+  color: #939393;
 }
 
 .details-list > li:first-child::after {
