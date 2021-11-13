@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should mobile search bar when click search icon 1`] = `
+<button
+  class="responsive-button search-button"
+  data-testid="responsive-search-button"
+>
+  <img
+    alt="searchVideos"
+    class="search-icon"
+    src="search.svg"
+    title="search"
+  />
+</button>
+`;
+
+exports[`should render header component 1`] = `
+<div
+  class="header"
+  data-testid="header"
+>
+  <div
+    class="header-wrapper"
+  >
+    <div
+      class="logo-wrapper"
+    >
+      <img
+        alt="youtube"
+        class="logo"
+        src="logo.svg"
+        title="You Tube"
+      />
+    </div>
+    <div
+      class="window-search-bar"
+    >
+      <div
+        data-testid="search-bar-component"
+        searchinputref="[object Object]"
+      />
+    </div>
+    <div
+      class="user-wrapper"
+    >
+      <button
+        class="responsive-button search-button"
+        data-testid="responsive-search-button"
+      >
+        <img
+          alt="searchVideos"
+          class="search-icon"
+          src="search.svg"
+          title="search"
+        />
+      </button>
+      <img
+        alt="user"
+        class="user-icon"
+        src="user.svg"
+        title="Test User"
+      />
+    </div>
+  </div>
+</div>
+`;

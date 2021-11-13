@@ -1,0 +1,42 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2020;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    background-color: #252525;
+}
+
+.header-wrapper {
+    height: 56px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo {
+    width: 120px;
+}
+
+.user-icon {
+    width: 35px;
+}
+
+.responsive-button {
+    display: none;
+}
+
+.window-search-bar{
+    position: relative;
+    flex: 0 1 728px;
+    min-width: 0px;
+}

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render video tile component 1`] = `
+<div
+  class="video"
+  data-testid="videoaTestId"
+>
+  <div
+    class="video-thumbnail"
+  >
+    <img
+      alt="videoTile"
+      src="aTestUrl"
+      title="aTestTitle"
+    />
+  </div>
+  <div
+    class="video-details"
+  >
+    <p
+      class="video-title"
+      data-testid="video-title"
+    >
+      aTestTitle
+    </p>
+    <ul
+      class="details-list"
+    >
+      <li
+        data-testid="channel-title"
+      />
+      <li
+        data-testid="published-date"
+      />
+    </ul>
+  </div>
+</div>
+`;

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render video list component 1`] = `
+<div
+  data-testid="video-thumbnail-wrapper"
+>
+  <div
+    data-testid="video-thumbnail"
+    videodata="[object Object]"
+  />
+</div>
+`;

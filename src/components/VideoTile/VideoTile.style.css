@@ -1,0 +1,40 @@
+.video {
+    display: flex;
+    flex-direction: row;
+    border-radius: 2px;
+    margin: 0 20px 20px;
+    cursor: pointer;
+}
+
+.video-thumbnail {
+    display: flex;
+    width: 35%;
+    flex-direction: column;
+}
+
+.video-thumbnail img {
+    width: 135px;
+}
+
+.video-title {
+    padding: 0 10px 10px 20px;
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.video .details-list {
+    list-style: none;
+    font-size: 12px;
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+
+.video .details-list > li {
+  display: inline;
+}
+
+.video .details-list > li:first-child::after {
+    content: "•";
+    margin: 0 4px;
+}

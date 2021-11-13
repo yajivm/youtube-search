@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SearchBar component 1`] = `
+<div
+  class="search-input-wrapper"
+  data-testid="search-input-wrapper"
+>
+  <form
+    class="search-form"
+    data-testid="search-form"
+  >
+    <div
+      class="form-controls"
+    >
+      <label>
+        Search
+      </label>
+      <input
+        data-testid="video-search"
+        id="video-search"
+        placeholder="Search"
+        type="text"
+        value=""
+      />
+    </div>
+  </form>
+  <button
+    class="search-button"
+    data-testid="search-button"
+  >
+    <img
+      alt="searchVideos"
+      class="search-icon"
+      src="search.svg"
+      title="search"
+    />
+  </button>
+</div>
+`;

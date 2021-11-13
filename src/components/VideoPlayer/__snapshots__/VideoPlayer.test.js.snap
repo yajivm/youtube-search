@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render place holder text when video id is not valid 1`] = `
+<div
+  class="place-holder-text-wrapper"
+  data-testid="place-holder-text-wrapper"
+>
+  Search for a video
+</div>
+`;

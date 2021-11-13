@@ -1,0 +1,30 @@
+.video-player {
+  height: 600px;
+}
+
+.video-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.place-holder-text-wrapper {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.details-list {
+    list-style: none;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.details-list > li {
+  display: inline;
+}
+
+.details-list > li:first-child::after {
+    content: "•";
+    margin: 0 4px;
+}
