@@ -1,0 +1,17 @@
+.details-list {
+    list-style: none;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.details-list > li {
+  display: inline;
+  font-weight: 700;
+  color: #939393;
+}
+
+.details-list > li:first-child::after {
+    content: "•";
+    margin: 0 4px;
+}

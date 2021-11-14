@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render list items 1`] = `
+<ul
+  class="details-list"
+  data-testid="details-list"
+>
+  <li
+    data-testid="channel-title"
+  >
+    aChannelTestTitle
+  </li>
+  <li
+    data-testid="published-date"
+  />
+</ul>
+`;
