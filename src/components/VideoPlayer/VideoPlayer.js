@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getPublishedDate } from '../../helpers/utils';
 import Config from '../../config';
 
+import ListItem from '../ListItem';
+
 import './VideoPlayer.style.css';
+
+const getVideoUrl = (videoId) => {
+    return `${Config.EMBED_VIDEO_URL}${videoId}`;
+};
 
 const VideoPlayer = ({ videoId, videoData }) => {
     if (!videoId) {
@@ -14,31 +19,23 @@ const VideoPlayer = ({ videoId, videoData }) => {
         );
     }
 
-    const getVideoUrl = () => {
-        return `${Config.EMBED_VIDEO_URL}${videoId}`;
-    };
-
-    const getVideoChannelDetails = () => {
-        if (videoData && Object.keys(videoData).length > 0) {
-            return (
-                <ul className="details-list">
-                    <li data-testid="channel-title">{videoData?.channelTitle}</li>
-                    <li data-testid="published-date">{getPublishedDate(videoData?.publishedAt)}</li>
-                </ul>
-            )
-        }
-    };
-
     return (
         <div className="video-player" data-testid="video-player">
             <iframe
                 title={videoId}
                 className="video-iframe"
                 data-testid="video-iframe"
-                src={getVideoUrl()}
+                src={getVideoUrl(videoId)}
             />
             {videoData?.title && <h3 className="title" data-testid="video-title">{videoData?.title}</h3>}
-            {getVideoChannelDetails()}
+            {(videoData && Object.keys(videoData).length > 0) ?
+                <ListItem listData={{
+                    publishedAt: videoData?.publishedAt,
+                    channelTitle: videoData?.channelTitle,
+                }} />
+            :
+                <></>
+            }
             {videoData?.description && <p className="description" data-testid="video-description">{videoData?.description}</p>}
         </div>
     );

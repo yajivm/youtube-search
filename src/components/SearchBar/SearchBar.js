@@ -1,11 +1,17 @@
-import React, { useState, useImperativeHandle } from 'react';
+import React, { useState, useEffect, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
+
 import SearchIcon from '../../assets/img/search.svg';
 import CrossIcon from '../../assets/img/cross.svg';
 
 import './SearchBar.style.css';
 
-const SearchBar = ({ onSearch, searchInputRef }) => {
+const SearchBar = ({
+    onSearch,
+    searchInputRef,
+    canClearSearchInputValue,
+    setClearSearchInputValue,
+}) => {
     const [searchInputValue, setSearchInputValue] = useState('');
 
     const onSearchInputValueChanged = event => {
@@ -29,6 +35,13 @@ const SearchBar = ({ onSearch, searchInputRef }) => {
           return searchInputValue;
         }
     }));
+
+    useEffect(() => {
+        if (canClearSearchInputValue){
+            setSearchInputValue('');
+            setClearSearchInputValue(false);
+        }
+    }, [canClearSearchInputValue, setClearSearchInputValue]);
 
     return(
         <>
@@ -64,10 +77,12 @@ const SearchBar = ({ onSearch, searchInputRef }) => {
 SearchBar.propTypes = {
     onSearch: PropTypes.func.isRequired,
     searchInputRef: PropTypes.shape({}),
+    canClearSearchInputValue: PropTypes.bool,
 };
 
 SearchBar.defaultProps = {
     searchInputRef: null,
+    canClearSearchInputValue: false,
 };
 
 export default SearchBar;

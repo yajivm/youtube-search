@@ -3,6 +3,7 @@ import { render, fireEvent, act } from '@testing-library/react';
 
 import SearchBar from './SearchBar';
 
+const mockSetClearSearchInputValue = jest.fn();
 const mockOnSearch = jest.fn();
 const mockRef = createRef();
 
@@ -72,4 +73,61 @@ test('should mobile search bar when enter data in input and click search icon', 
 
     expect(mockOnSearch).toHaveBeenCalledTimes(1);
     expect(mockOnSearch).toHaveBeenCalledWith('aTestWord');
+});
+
+test('should clear input value when canClearSearchInputValue prop is true', () => {
+    mockSetClearSearchInputValue.mockReset();
+
+    const { getByTestId } = render(
+        <SearchBar
+            onSearch={mockOnSearch}
+            searchInputRef={mockRef}
+            canClearSearchInputValue
+            setClearSearchInputValue={mockSetClearSearchInputValue}
+        />
+    );
+    
+    const searchInput = getByTestId('video-search');
+    
+    expect(searchInput).toBeDefined();
+
+    expect(mockSetClearSearchInputValue).toHaveBeenCalledWith(false);
+    expect(searchInput.value).toStrictEqual('');
+});
+
+test('should not clear input value when canClearSearchInputValue prop is false', () => {
+    mockSetClearSearchInputValue.mockReset();
+
+    const { getByTestId } = render(
+        <SearchBar
+            onSearch={mockOnSearch}
+            searchInputRef={mockRef}
+            canClearSearchInputValue={false}
+            setClearSearchInputValue={mockSetClearSearchInputValue}
+        />
+    );
+    
+    const searchInput = getByTestId('video-search');
+    
+    expect(searchInput).toBeDefined();
+
+    expect(mockSetClearSearchInputValue).not.toHaveBeenCalled();
+});
+
+test('should not clear input value when canClearSearchInputValue prop is not passed', () => {
+    mockSetClearSearchInputValue.mockReset();
+
+    const { getByTestId } = render(
+        <SearchBar
+            onSearch={mockOnSearch}
+            searchInputRef={mockRef}
+            setClearSearchInputValue={mockSetClearSearchInputValue}
+        />
+    );
+    
+    const searchInput = getByTestId('video-search');
+    
+    expect(searchInput).toBeDefined();
+
+    expect(mockSetClearSearchInputValue).not.toHaveBeenCalled();
 });

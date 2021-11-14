@@ -73,7 +73,7 @@ test('should render video list component', async () => {
     const videoListElement = getByTestId('video-list');
 
     expect(mockGetVideoDetailsByKey).toHaveBeenCalledTimes(1);
-    expect(mockGetVideoDetailsByKey).toHaveBeenCalledWith('youtube', 30);
+    expect(mockGetVideoDetailsByKey).toHaveBeenCalledWith('Maze runner', 30);
     expect(videoListElement).toBeDefined();
     expect(videoListElement).toMatchSnapshot();
 });

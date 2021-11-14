@@ -6,23 +6,13 @@ import './VideosList.style.css';
 
 const VideosList = ({ listData, onVideoSelected, isThumbnailLayout }) => {
 
-    const getVideosList = () => {
-      if (listData?.length) {
-        return listData.map((videoData, index) => {
-          return (
-            <div key={index} data-testid="video-thumbnail-wrapper" className={isThumbnailLayout ? 'thumbnail-wrapper' : 'video-wrapper'}>
-              <VideoTile videoData={videoData} onSelectVideoTile={onVideoSelected} isThumbnailLayout={isThumbnailLayout} />
-            </div>
-          );
-        });
-      } else {
-        return <></>;
-      }
-    };
-
-    return (
-        <>{getVideosList()}</>
-    );
+    return listData.map((videoData, index) => {
+      return (
+        <div key={index} data-testid="video-thumbnail-wrapper" className={isThumbnailLayout ? 'thumbnail-wrapper' : 'video-wrapper'}>
+          <VideoTile videoData={videoData} onSelectVideoTile={onVideoSelected} isThumbnailLayout={isThumbnailLayout} />
+        </div>
+      );
+    });
 };
 
 VideosList.propTypes = {

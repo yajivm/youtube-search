@@ -24,6 +24,7 @@ exports[`should render header component 1`] = `
   >
     <div
       class="logo-wrapper"
+      data-testid="logo"
     >
       <img
         alt="youtube"

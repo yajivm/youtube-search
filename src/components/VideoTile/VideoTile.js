@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getPublishedDate } from '../../helpers/utils';
+
+import ListItem from '../ListItem';
 
 import './VideoTile.style.css';
 
@@ -9,21 +10,10 @@ const VideoTile = ({ videoData, onSelectVideoTile, isThumbnailLayout }) => {
         onSelectVideoTile(videoData);
     };
 
-    const getVideoChannelDetails = () => {
-        if (videoData && Object.keys(videoData?.snippet).length > 0) {
-            return (
-                <ul className="details-list">
-                    <li data-testid="channel-title">{videoData?.snippet?.channelTitle}</li>
-                    <li data-testid="published-date">{getPublishedDate(videoData?.snippet?.publishedAt)}</li>
-                </ul>
-            )
-        }
-    };
-
     return (
         <div
             className={`video${isThumbnailLayout ? ' video-thumbnail' : ''}`}
-            onClick={() => selectVideo()}
+            onClick={selectVideo}
             data-testid={`video${videoData?.id?.videoId}`}
         >
             <div className="video-image-wrapper">
@@ -31,7 +21,14 @@ const VideoTile = ({ videoData, onSelectVideoTile, isThumbnailLayout }) => {
             </div>
             <div className="video-details">
                 <p className="video-title" data-testid="video-title">{videoData?.snippet?.title}</p>
-                {getVideoChannelDetails()}
+                {(videoData?.snippet && Object.keys(videoData?.snippet).length > 0) ?
+                    <ListItem listData={{
+                        publishedAt: videoData?.snippet?.publishedAt,
+                        channelTitle: videoData?.snippet?.channelTitle,
+                    }} />
+                :
+                    <></>
+                }
             </div>
         </div>
     );

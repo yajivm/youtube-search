@@ -2,6 +2,14 @@
     border-radius: 2px;
     margin: 0 20px 20px;
     cursor: pointer;
+    padding: 8px;
+    height: 350px;
+}
+
+.video:hover {
+    max-height: 100%;
+    background: #262626;
+    transition: 0.3s;
 }
 
 .video img {
@@ -12,6 +20,7 @@
 .video-thumbnail {
     display: flex;
     flex-direction: row;
+    height: auto;
 }
 
 .video-thumbnail .video-image {

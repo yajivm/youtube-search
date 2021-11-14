@@ -3,12 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import VideoTile from './VideoTile';
 
-const mockGetPublishedData = jest.fn();
-jest.mock('../../helpers/utils', () => {
-    return {
-        getPublishedDate: args => mockGetPublishedData(args),
-    }
-});
+jest.mock('../ListItem', () => (props) => <div data-testid="list-item" {...props} />);
 
 let mockVideoData = {
     id: {
@@ -52,11 +47,7 @@ test('should render channel details and date when publishedAt and channelTitle p
 
     const { getByTestId } = render(<VideoTile videoData={mockVideoData} onSelectVideoTile={mockOnSelectedVideoTitle} />);
     
-    expect(getByTestId('channel-title')).toBeDefined();
-    expect(getByTestId('channel-title').textContent).toStrictEqual('aChannelTestTitle');
-    expect(mockGetPublishedData).toHaveBeenCalledTimes(1);
-    expect(mockGetPublishedData).toHaveBeenCalledWith('2021-11-12T22:18:07Z');
-    expect(getByTestId('published-date')).toBeDefined();
+    expect(getByTestId('list-item')).toBeDefined();
 });
 
 test('should call call back when click video tile', () => {

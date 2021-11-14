@@ -31,6 +31,10 @@ body,
 @media screen and (max-width: 1024px) {
     main {
         display: flex;
+        flex-direction: row;
+    }
+    .list-with-video-player {
+        display: flex !important;
         flex-direction: column;
     }
     .video-player {
@@ -48,6 +52,7 @@ body,
     }
     .video-thumbnail {
         align-items: center;
+        width: 100% !important;
     }
     .video-details {
         width: 100%;
@@ -84,6 +89,14 @@ body,
     .video-wrapper {
         width: 50%;
     }
+    .video {
+        height: auto;
+        width: 80%;
+        margin: 0 auto 20px;
+    }
+    .user-icon {
+        height: 35px;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -93,5 +106,8 @@ body,
     .video img {
         width: 100%;
         height: 400px;
+    }
+    .video-thumbnail img{
+        height: 135px !important;
     }
 }

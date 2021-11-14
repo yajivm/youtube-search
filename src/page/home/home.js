@@ -9,7 +9,7 @@ import { getVideoDetailsByKey } from '../../services/youtube.service';
 
 import './home.style.css';
 
-const DEFAULT_SEARCH_KEY = 'youtube';
+const DEFAULT_SEARCH_KEY = 'Maze runner';
 const { EXPECTED_RESULTS_COUNT } = Config;
 let maxResultsCount = EXPECTED_RESULTS_COUNT;
 
@@ -25,6 +25,7 @@ const Home = () => {
                 const { items } = data;
                 if (items?.length !== 0) {
                     setVideosList(items);
+                    setSelectedVideoDetails(null);
                     console.log('items=====>', items);
                 }
                 console.log('maxResultsCount=====>', maxResultsCount);

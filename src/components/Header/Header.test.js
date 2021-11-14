@@ -30,3 +30,16 @@ test('should mobile search bar when click search icon', () => {
     expect(queryByTestId('mobile-search-bar')).toBeDefined();
     expect(searchIcon).toMatchSnapshot();
 });
+
+test('should call search when click logo', () => {
+    const { getByTestId } = render(<Header onSearch={mockOnSearch} headerRef={mockRef} />);
+    
+    const logo = getByTestId('logo');
+
+    expect(logo).toBeDefined();
+    
+    fireEvent.click(logo);
+
+    expect(mockOnSearch).toHaveBeenCalledTimes(1);
+    expect(mockOnSearch).toHaveBeenCalledWith('Maze runner', 15);
+});
